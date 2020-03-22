@@ -1,0 +1,14 @@
+sphinx
+sphinx_rtd_theme
+numpy
+# Install the pkg-config to build matplotlib
+matplotlib
+breathe
+docker
+pytest
+git-lfs
+sphinx-issues
+pillow
+nbsphinx
+# numpydoc
+recommonmark

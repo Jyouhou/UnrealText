@@ -1,0 +1,19 @@
+DOXYFILE_ENCODING = UTF-8
+PROJECT_NAME = UnrealCV
+PROJECT_NUMBER =
+# Get this version number from git tag
+# The path is relative to the CWD
+OUTPUT_DIRECTORY = ./docs/doxygen
+INPUT = ./Source/UnrealCV/
+INPUT += ./docs/doxygen.md
+
+JAVADOC_AUTOBRIEF = YES
+MARKDOWN_SUPPORT = YES
+EXTRACT_ALL = YES
+INPUT_ENCODING = UTF-8
+FILE_PATTERNS = *.cpp  *.h
+RECURSIVE = YES
+EXCLUDE_PATTERNS = */.git/*
+FULL_PATH_NAMES = NO
+USE_MDFILE_AS_MAINPAGE = doxygen.md
+GENERATE_XML = True

@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# MAC file system
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/*/.DS_Store
+*/*/*/*/*/.DS_Store
+*/*/*/*/*/*/.DS_Store
