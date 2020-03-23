@@ -5,11 +5,12 @@ _UnrealText_ is a project that synthesizes scene text images using 3D graphics e
 ![pipeline](imgs/pipeline.jpg)
 
 
-We release:
+We release (click the hyperlink to access):
 
-- a large-scale Latin/English scene text dataset and a multilingual version
-- source code and instructions on how to use them
+- large-scale Latin/English and multilingual [synthetic scene text datasets](https://github.com/Jyouhou/UnrealText/tree/master/DatasetReleaseNote.md)
+- the [source code and instructions](https://github.com/Jyouhou/UnrealText/tree/master/code/Tutorial-on-deployment.md) on how to use them
 - a demo UE project and packaged scene executable
+- the [re-annotated scene text recognition dataset](https://github.com/Jyouhou/Case-Sensitive-Scene-Text-Recognition-Datasets) used in our evaluation
 
 ## Paper
 ```
