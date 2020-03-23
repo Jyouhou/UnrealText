@@ -1,4 +1,4 @@
-# UnrealText
+# UnrealText: Synthetic Scene Text Images/
 
 _UnrealText_ is a project that synthesizes scene text images using 3D graphics engine. 
 
