@@ -2,7 +2,7 @@
 
 _UnrealText_ is a project that synthesizes scene text images using 3D graphics engine. 
 
-![pipeline](imgs/pipeline.pdf)
+![pipeline](imgs/pipeline.jpg)
 
 
 We release:
