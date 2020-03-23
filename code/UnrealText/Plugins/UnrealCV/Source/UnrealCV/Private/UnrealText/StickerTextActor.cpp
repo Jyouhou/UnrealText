@@ -16,16 +16,14 @@ AStickerTextActor::AStickerTextActor()
 
     mesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("TextMesh"));
     RootComponent = mesh;
-    // default text file used in debug only
-    DefaultTextPngFilePath = "/home/megvii/Documents/Unreal Projects/TextSpawnPrac/Content/UnrealTextAssets/hahaha2-3.png";
-    MaterialAssetFilePath = "/Game/UnrealTextAssets/Synth3DTexture1.Synth3DTexture1";
+    DefaultTextPngFilePath = "/Game/UnrealText/default.png";
+    MaterialAssetFilePath = "/Game/UnrealText/UnrealTextTexture.UnrealTextTexture";
     MeshDensityX = 50;
     MeshDensityY = 50;
     MeshDensityMultiplier = 4;
 
     // setting light tracer
     TraceParams = FCollisionQueryParams(FName(TEXT("TraceUsableActor")), true, this);
-    // TraceParams.bTraceAsyncScene = true;
     TraceParams.bReturnPhysicalMaterial = false;
     TraceParams.bTraceComplex = true;
     TraceParams.bReturnFaceIndex = true;
@@ -152,7 +150,6 @@ UTexture2D* AStickerTextActor::LoadTexture2D(const FString Path, bool& IsValid, 
     {
         UE_LOG(LogTemp, Warning, TEXT("File Valid"));
         const TArray<uint8>* UncompressedRGBA = nullptr;
-        //if (ImageWrapper->GetRaw(ERGBFormat::BGRA, 8, UncompressedRGBA))
         if (ImageWrapper->GetRaw(ERGBFormat::RGBA, 8, UncompressedRGBA))
         {
             UE_LOG(LogTemp, Warning, TEXT("Raw gotten"));
@@ -248,10 +245,8 @@ bool AStickerTextActor::CreateRectTriangle(FVector& UL_Point,
     // triangle number per column/row = Density
     UE_LOG(LogTemp, Warning, TEXT("Start to form triangles"));
     for (int32 y=0; y<DensityY * MeshDensityMultiplier - 1; y++)
-    // for (int32 y=0; y<DensityY; y++)
     {
         for (int32 x=0; x<DensityX * MeshDensityMultiplier - 1; x++)
-        // for (int32 x=0; x<DensityX; x++)
         {
 
             // triangle 1
@@ -276,9 +271,6 @@ void AStickerTextActor::ClearMeshData()
     vertices.Empty();
     triangles.Empty();
     uvs.Empty();
-    BBoxCoordinates.Empty();
-    CBoxCoordinates.Empty();
-    Texts.Empty();
 }
 
 void AStickerTextActor::LoadTextPng(FString TextFilePath)
@@ -402,134 +394,6 @@ void AStickerTextActor::CloseTraceWithHitCheck(bool& isHit,
     Location = InitLocation;
     
     
-}
-
-FVector2D lineIntersectSeg(FVector2D AStart, 
-                        FVector2D AEnd, 
-                        FVector2D BStart, 
-                        FVector2D BEnd) 
-{
-  double a = BEnd[1] - BStart[1];
-  double b = BStart[0] - BEnd[0];
-  double c = BEnd[0] * BStart[1] - BStart[0] * BEnd[1];
-  double u = FGenericPlatformMath::Abs(a * AStart[0] + b * AStart[1] + c);
-  double v = FGenericPlatformMath::Abs(a * AEnd[0] + b * AEnd[1] + c);
-  return FVector2D((AStart[0] * v + AEnd[0] * u) / (u+v), (AStart[1] * v + AEnd[1] * u) / (u+v));
-}
-
-float Vector3DCosineAngle(FVector X, FVector Y)
-{
-    return FVector::DotProduct(X, Y) / ( X.Size() * Y.Size());
-}
-
-bool bIsRectangle(FVector UL_Position, 
-                FVector UR_Position, 
-                FVector BR_Position, 
-                FVector BL_Position, 
-                float OrthogonalCosineThreshold,
-                float &UL_CosineAngle,
-                float &UR_CosineAngle,
-                float &BR_CosineAngle,
-                float &BL_CosineAngle)
-{
-    FVector Vector01 = UR_Position - UL_Position;
-    FVector Vector12 = BR_Position - UR_Position;
-    FVector Vector23 = BL_Position - BR_Position;
-    FVector Vector30 = UL_Position - BL_Position;
-
-    UL_CosineAngle = Vector3DCosineAngle(Vector01, -Vector30);
-    UR_CosineAngle = Vector3DCosineAngle(-Vector01, Vector12);
-    BR_CosineAngle = Vector3DCosineAngle(-Vector12, Vector23);
-    BL_CosineAngle = Vector3DCosineAngle(Vector30, -Vector23);
-    
-    return ((UL_CosineAngle < OrthogonalCosineThreshold) && (UR_CosineAngle < OrthogonalCosineThreshold) && (BL_CosineAngle < OrthogonalCosineThreshold) && (BR_CosineAngle < OrthogonalCosineThreshold));
-}
-
-// this is the adjustment function
-void AStickerTextActor::ScreenRectToWorldRect(TArray<float> IrreQuad, 
-                                            FVector &UL_Position, 
-                                            FVector &UR_Position, 
-                                            FVector &BR_Position, 
-                                            FVector &BL_Position)
-{
-    // IrreRect screen location : x_i, y_i----UL, UR, BR, BL
-    // step 1: transform into world space
-    // compute four corners
-    FVector FourCorners[4];
-    // upper left
-    FourCorners[0] = TraceHitPointLocationComputationFromScreen(IrreQuad[0], IrreQuad[1]);
-    // upper right
-    FourCorners[1] = TraceHitPointLocationComputationFromScreen(IrreQuad[2], IrreQuad[3]);
-    // bottom right
-    FourCorners[2] = TraceHitPointLocationComputationFromScreen(IrreQuad[4], IrreQuad[5]);
-    // bottom left
-    FourCorners[3] = TraceHitPointLocationComputationFromScreen(IrreQuad[6], IrreQuad[7]);
-
-    // compute centers
-    FVector2D Point0 = FVector2D(IrreQuad[0], IrreQuad[1]); // UL
-    FVector2D Point1=FVector2D(IrreQuad[2], IrreQuad[3]); // UR
-    FVector2D Point2=FVector2D(IrreQuad[4], IrreQuad[5]); // BR
-    FVector2D Point3=FVector2D(IrreQuad[6], IrreQuad[7]); // BL
-    FVector2D Intersect = lineIntersectSeg(Point0, Point2, Point1, Point3);
-    FVector CenterScreenPosition = TraceHitPointLocationComputationFromScreen(Intersect[0], Intersect[1]);
-
-    // vectors toward four points
-    FVector VertexDirection[4];
-    VertexDirection[0] = FourCorners[0] - CenterScreenPosition;
-    VertexDirection[1] = FourCorners[1] - CenterScreenPosition;
-    VertexDirection[2] = FourCorners[2] - CenterScreenPosition;
-    VertexDirection[3] = FourCorners[3] - CenterScreenPosition;
-    float ShrinkageRatio[4] = {1.0f, 1.0f, 1.0f, 1.0f};
-
-    // int32 ShrinkTrialCount = 0;
-    ShrinkTrialCount = 0;
-    
-    while((!bIsRectangle(FourCorners[0], 
-                        FourCorners[1], 
-                        FourCorners[2], 
-                        FourCorners[3],
-                        OrthogonalCosineThreshold,
-                        VertexCosine[0], 
-                        VertexCosine[1], 
-                        VertexCosine[2], 
-                        VertexCosine[3])) && 
-                        (ShrinkTrialCount < MaximumShrinkTrialNumber))
-    {
-        UE_LOG(LogTemp, Warning, TEXT(" Shrinking"));
-        ShrinkTrialCount++; 
-        int32 minimumVertex = 0;
-        if (VertexCosine[1] > VertexCosine[minimumVertex])
-        {
-            minimumVertex = 1;
-        }
-        if (VertexCosine[2] > VertexCosine[minimumVertex])
-        {
-            minimumVertex = 2;
-        }
-        if (VertexCosine[3] > VertexCosine[minimumVertex])
-        {
-            minimumVertex = 3;
-        }
-        ShrinkageRatio[minimumVertex] *= ShrinkRatio;
-        FourCorners[minimumVertex] = VertexDirection[minimumVertex] * ShrinkageRatio[minimumVertex] + CenterScreenPosition;
-    }
-
-    UL_Position = FourCorners[0];
-    UR_Position = FourCorners[1];
-    BR_Position = FourCorners[2];
-    BL_Position = FourCorners[3];
-}
-
-void AStickerTextActor::SetTextLocationFromScreen(float UL_X, float UL_Y, float UR_X, float UR_Y, float BR_X, float BR_Y, float BL_X, float BL_Y)
-{
-    TArray<float> ScreenRectCoor = {UL_X, UL_Y, UR_X, UR_Y, BR_X, BR_Y, BL_X, BL_Y};
-    ScreenRectToWorldRect(ScreenRectCoor, ULPosition, URPosition, BRPosition, BLPosition);
-}
-
-void AStickerTextActor::Handle_SetTextPositionFromScreen(float UL_X, float UL_Y, float UR_X, float UR_Y, float BR_X, float BR_Y, float BL_X, float BL_Y, FVector2D &ULScreenPosition, FVector2D &URScreenPosition, FVector2D &BRScreenPosition, FVector2D &BLScreenPosition)
-{       
-    SetTextLocationFromScreen(UL_X, UL_Y, UR_X, UR_Y, BR_X, BR_Y, BL_X, BL_Y);
-    Handle_GetCornerCoor(ULScreenPosition, URScreenPosition, BRScreenPosition, BLScreenPosition);
 }
 
 void AStickerTextActor::Handle_ResizeAndGenerateMesh(float TargetAspectRatio)

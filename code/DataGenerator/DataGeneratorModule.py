@@ -1,6 +1,7 @@
 import sys
 import os
 import os.path as osp
+opa = os.path.abspath
 import pdb
 import time
 import json
@@ -25,7 +26,7 @@ class DataGenerator(object):
                  WindowHeight=720,
                  WindowWidth=1080,
                  MaxTextNum = 15,
-                 DataStoragePath='./GeneratedData/DataFraction_1',
+                 DataStoragePath='../../../GeneratedData/DataFraction_1',
                  camera_anchor_filepath = './camera_anchors/urbancity.txt',
                  EnvName='',
                  anchor_freq=10,
@@ -35,10 +36,11 @@ class DataGenerator(object):
                  is_debug=True,
                  multi_lingual=False,
                  HighResFactor=2.0,
-                 UnrealProjectPath="./"):
-        self.client = WrappedClient(UnrealCVClient, DataStoragePath, HighResFactor, UnrealProjectPath)
+                 UnrealProjectName="./",
+                 **kwargs):
+        self.client = WrappedClient(UnrealCVClient, DataStoragePath, HighResFactor, UnrealProjectName)
         self.DataStoragePath = DataStoragePath
-        self.UnrealProjectPath = UnrealProjectPath
+        self.UnrealProjectName = UnrealProjectName
         self.WindowHeight = WindowHeight
         self.WindowWidth = WindowWidth
         self.MaxTextNum = MaxTextNum
@@ -47,7 +49,7 @@ class DataGenerator(object):
         self.anchor_freq = anchor_freq
         self.HighResFactor = HighResFactor
         
-        self.RootPath = DataStoragePath
+        self.RootPath = opa(DataStoragePath)
         while os.path.isdir(self.RootPath):
             root_path, count = self.RootPath.split('_')
             self.RootPath = root_path + '_' + str(int(count) + 1)
@@ -100,10 +102,11 @@ class DataGenerator(object):
             self.client.QuitGame()
             self.client.disconnect()
             self._cleanup()
+            # os.system('~/cache_light.png')
 
     def _cleanup(self):
-        os.system(f'rm {self.UnrealProjectPath}/Saved/Screenshots/Linux/*png')
-        os.system(f'rm {self.UnrealProjectPath}/Saved/Logs/*')
+        os.system(f'rm ../../../PackagedEnvironment/{self.UnrealProjectName}/{self.UnrealProjectName}/Saved/Screenshots/LinuxNoEditor/*png')
+        os.system(f'rm ../../../PackagedEnvironment/{self.UnrealProjectName}/{self.UnrealProjectName}/Saved/Logs/*')
 
     def _InitializeDataStorage(self):
         os.makedirs(self.ImgFolder, exist_ok=True)
@@ -187,18 +190,19 @@ class DataGenerator(object):
                 print(f' ----- save label:           {self.save_label_meter}')
                 print(f' ----- retrieve image:       {self.save_meter}')
     
-    def StartEngine(self, EnvName):
-        engine_exe = osp.join(self.UnrealProjectPath, EnvName, 'LinuxNoEditor/UnrealText/Binaries/Linux/UnrealText')
-        os.system(f'chmod +x {engine_exe}')
-        command = engine_exe + ' > engine_log.txt &'
-        print(command)
-        subprocess.call(command, shell=True)
-        print('Engine Started')
+def StartEngine(UnrealProjectName):
+    engine_exe = f'../../../PackagedEnvironment/{UnrealProjectName}/{UnrealProjectName}/Binaries/Linux/{UnrealProjectName}'
+    os.system(f'chmod +x {engine_exe}')
+    command = engine_exe + ' > engine_log.txt &'
+    print(command)
+    subprocess.call(command, shell=True)
+    print('Engine Started')
+    time.sleep(15)
 
 
 if __name__ == '__main__':
     # test
-    Generator = DataGenerator(MaxTextNum=15, is_debug=True)
+    Generator = DataGenerator(MaxTextNum=5, is_debug=True)
     Generator.StartGeneration(5, 0.0)
 
 

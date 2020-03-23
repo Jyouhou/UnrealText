@@ -20,10 +20,10 @@ size_arabic = len(arabic_alphabet)
 class WordRenderer(object):
     def __init__(self, *args, **kwargs):
         self.FontSize = kwargs.get('FontSize', [25, 128])
-        self.FontRoots = kwargs.get('FontPath', ['../../resources/fonts&corpus/Latin/fonts/'])
-        self.CorpusPath = kwargs.get('CorpusPath', '../../resources/fonts&corpus/Latin/corpus/English.txt')
-        self.ContentPath = kwargs.get('ContentPath', '../../resources/WordCrops')
-        self.BackGroundPath = kwargs.get('BackGroundPath', '../../resources/bg_img')
+        self.FontRoots = kwargs.get('FontPath', ['../../../resources/fonts&corpus/Latin/fonts/'])
+        self.CorpusPath = kwargs.get('CorpusPath', '../../../resources/fonts&corpus/Latin/corpus/English.txt')
+        self.ContentPath = kwargs.get('ContentPath', '../../../resources/WordCrops')
+        self.BackGroundPath = kwargs.get('BackGroundPath', '../../../resources/bg_img')
         self.SeparatedBySpace = kwargs.get('SeparatedBySpace', True)
         self.is_debug = kwargs.get('is_debug', False)
         self.is_mlt = kwargs.get('is_mlt', False)
@@ -332,7 +332,7 @@ class WordRenderer(object):
         print('Start to filter out unavailable fonts.')
         for fontpath in tqdm.tqdm(self.AvailableFontPaths):
             flag = True
-            for i in range(40):
+            for i in range(5):
                 flag = flag and self._CheckFont(fontpath, self._LoadChar())
             if flag:
                 Filtered.append(fontpath)
@@ -426,26 +426,26 @@ class WordRenderer(object):
 if __name__ == '__main__':
     # testing: 
     # Renderer = WordRenderer(is_debug=True, SeparatedBySpace=True,
-    #                 FontPath = ['../../resources/fonts&corpus/Latin/fonts/'],
-    #                 CorpusPath = '../../resources/fonts&corpus/Latin/corpus/corpus_en.xml')
+    #                 FontPath = ['../../../resources/fonts&corpus/Latin/fonts/'],
+    #                 CorpusPath = '../../../resources/fonts&corpus/Latin/corpus/corpus_en.xml')
     Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=True, is_Arabic=True,
-                    FontPath = ['../../resources/fonts&corpus/Arabic/fonts/'],
-                    CorpusPath = '../../resources/fonts&corpus/Arabic/corpus/corpus_ar.xml')
+                    FontPath = ['../../../resources/fonts&corpus/Arabic/fonts/'],
+                    CorpusPath = '../../../resources/fonts&corpus/Arabic/corpus/corpus_ar.xml')
     # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=True,
-    #                 FontPath = ['../../resources/fonts&corpus/Bangla/fonts/'],
-    #                 CorpusPath = '../../resources/fonts&corpus/Bangla/corpus/corpus_bn.xml')
+    #                 FontPath = ['../../../resources/fonts&corpus/Bangla/fonts/'],
+    #                 CorpusPath = '../../../resources/fonts&corpus/Bangla/corpus/corpus_bn.xml')
     # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=True,
-    #                 FontPath = ['../../resources/fonts&corpus/Hindi/fonts/'],
-    #                 CorpusPath = '../../resources/fonts&corpus/Hindi/corpus/corpus_hi.xml')
+    #                 FontPath = ['../../../resources/fonts&corpus/Hindi/fonts/'],
+    #                 CorpusPath = '../../../resources/fonts&corpus/Hindi/corpus/corpus_hi.xml')
     # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=False,
-    #                 FontPath = ['../../resources/fonts&corpus/Japanese/fonts/'],
-    #                 CorpusPath = '../../resources/fonts&corpus/Japanese/corpus/corpus_ja.xml')
+    #                 FontPath = ['../../../resources/fonts&corpus/Japanese/fonts/'],
+    #                 CorpusPath = '../../../resources/fonts&corpus/Japanese/corpus/corpus_ja.xml')
     # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=False,
-    #                 FontPath = ['../../resources/fonts&corpus/Korean/fonts/'],
-    #                 CorpusPath = '../../resources/fonts&corpus/Korean/corpus/corpus_ko.xml')
+    #                 FontPath = ['../../../resources/fonts&corpus/Korean/fonts/'],
+    #                 CorpusPath = '../../../resources/fonts&corpus/Korean/corpus/corpus_ko.xml')
     # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=False,
-    #                 FontPath = ['../../resources/fonts&corpus/Chinese/fonts/'],
-    #                 CorpusPath = '../../resources/fonts&corpus/Chinese/corpus/corpus_zh.xml')
+    #                 FontPath = ['../../../resources/fonts&corpus/Chinese/fonts/'],
+    #                 CorpusPath = '../../../resources/fonts&corpus/Chinese/corpus/corpus_zh.xml')
     for i in (range(40)):
         print(f"{i}--------")
         # Img[HxWx4], Texts(List[str]), CBOX[nx4x2], BBOX[nx4x2] (N_box, corner, x/y)
@@ -473,4 +473,4 @@ if __name__ == '__main__':
         # print(texts)
         # print(np.mean(img[:, :, 3]))
         # img[:, :, 3] //= 2
-        cv2.imwrite(f'../../WordCrops/sample-{i%80}.png', img)
+        # cv2.imwrite(f'../../WordCrops/sample-{i%80}.png', img)

@@ -60,7 +60,7 @@ private:
 	// UnrealText utilities
 	AStickerTextActor* GetStickerTextActor_I_th(int32 Index);
     // Handle_SetTextPositionFromScreen
-	FExecStatus SetStickerTextCoordinates(const TArray<FString>& Args);
+	// FExecStatus SetStickerTextCoordinates(const TArray<FString>& Args);
 	// Handle_ResizeAndGenerateMesh
 	FExecStatus SetStickerTextMesh(const TArray<FString>& Args);
 	// Handle_LoadTextFromPngPath

@@ -72,7 +72,6 @@ void AEnvJitterActor::Light_Intensity()
 	for (int32 i=0; i<FoundActors.Num(); i++)
 	{
 		ADirectionalLight* LightInstance = Cast<ADirectionalLight>(FoundActors[i]);
-		// float intensity = LightInstance->GetBrightness();
 		LightInstance->SetBrightness(new_intensity);
 	}
 
@@ -80,7 +79,6 @@ void AEnvJitterActor::Light_Intensity()
 	for (int32 i=0; i<FoundActors.Num(); i++)
 	{
 		ASpotLight* LightInstance = Cast<ASpotLight>(FoundActors[i]);
-		// float intensity = LightInstance->GetBrightness();
 		LightInstance->SetBrightness(new_intensity * Light_dir_point_mul);
 	}
 
@@ -88,7 +86,6 @@ void AEnvJitterActor::Light_Intensity()
 	for (int32 i=0; i<FoundActors.Num(); i++)
 	{
 		APointLight* LightInstance = Cast<APointLight>(FoundActors[i]);
-		// float intensity = LightInstance->GetBrightness();
 		LightInstance->SetBrightness(new_intensity * Light_dir_point_mul);
 	}
 }
@@ -96,7 +93,6 @@ void AEnvJitterActor::Light_Intensity()
 void AEnvJitterActor::Light_Direction()
 {
 	TArray<AActor*> FoundActors;
-	// pitch, yaw
 	float yaw_delta = FMath::FRandRange(-Light_row_yaw, Light_row_yaw);
 	float pitch_delta = FMath::FRandRange(-Light_row_pitch, Light_row_pitch);
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADirectionalLight::StaticClass(), FoundActors);

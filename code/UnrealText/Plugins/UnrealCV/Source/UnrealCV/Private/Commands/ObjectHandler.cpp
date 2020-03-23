@@ -160,9 +160,9 @@ void FObjectHandler::RegisterCommands()
 	);
 	
 	// UnrealText Command
-	CommandDispatcher->BindCommand(TEXT("vget /object/stickertext/coor [uint] [float] [float] [float] [float] [float] [float] [float] [float]"), 
-		FDispatcherDelegate::CreateRaw(this, &FObjectHandler::SetStickerTextCoordinates), 
-		"Set the four coordinates (screen space) of an AStickerTextActor instance, and return the coordinates after adjustment");
+	// CommandDispatcher->BindCommand(TEXT("vget /object/stickertext/coor [uint] [float] [float] [float] [float] [float] [float] [float] [float]"), 
+	// 	FDispatcherDelegate::CreateRaw(this, &FObjectHandler::SetStickerTextCoordinates), 
+	// 	"Set the four coordinates (screen space) of an AStickerTextActor instance, and return the coordinates after adjustment");
 
 	CommandDispatcher->BindCommand(TEXT("vset /object/stickertext/aspect [uint] [float]"), 
 		FDispatcherDelegate::CreateRaw(this, &FObjectHandler::SetStickerTextMesh), 
@@ -481,23 +481,23 @@ FExecStatus FObjectHandler::SetName(const TArray<FString>& Args)
 
 // UnrealText Command
 
-FExecStatus FObjectHandler::SetStickerTextCoordinates(const TArray<FString>& Args)
-{
-	if (Args.Num() == 9)
-	{
-		AStickerTextActor* TextInstance = GetStickerTextActor_I_th(FCString::Atoi(*Args[0]));
-		if (TextInstance == nullptr)
-		{
-			return FExecStatus::Error(FString::Printf(TEXT("SetStickerTextCoordinates: instance index out of range!")));
-		}
-		// actual code
-		FVector2D Point_UL, Point_UR, Point_BR, Point_BL;
-		TextInstance->Handle_SetTextPositionFromScreen(FCString::Atof(*Args[1]), FCString::Atof(*Args[2]), FCString::Atof(*Args[3]), FCString::Atof(*Args[4]), FCString::Atof(*Args[5]), FCString::Atof(*Args[6]), FCString::Atof(*Args[7]), FCString::Atof(*Args[8]), Point_UL, Point_UR, Point_BR, Point_BL);
-		return FExecStatus::OK(FString::Printf(TEXT("Location after adjustment: %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f"), Point_UL[0], Point_UL[1], Point_UR[0], Point_UR[1], Point_BR[0], Point_BR[1], Point_BL[0], Point_BL[1]));
+// FExecStatus FObjectHandler::SetStickerTextCoordinates(const TArray<FString>& Args)
+// {
+// 	if (Args.Num() == 9)
+// 	{
+// 		AStickerTextActor* TextInstance = GetStickerTextActor_I_th(FCString::Atoi(*Args[0]));
+// 		if (TextInstance == nullptr)
+// 		{
+// 			return FExecStatus::Error(FString::Printf(TEXT("SetStickerTextCoordinates: instance index out of range!")));
+// 		}
+// 		// actual code
+// 		FVector2D Point_UL, Point_UR, Point_BR, Point_BL;
+// 		TextInstance->Handle_SetTextPositionFromScreen(FCString::Atof(*Args[1]), FCString::Atof(*Args[2]), FCString::Atof(*Args[3]), FCString::Atof(*Args[4]), FCString::Atof(*Args[5]), FCString::Atof(*Args[6]), FCString::Atof(*Args[7]), FCString::Atof(*Args[8]), Point_UL, Point_UR, Point_BR, Point_BL);
+// 		return FExecStatus::OK(FString::Printf(TEXT("Location after adjustment: %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f"), Point_UL[0], Point_UL[1], Point_UR[0], Point_UR[1], Point_BR[0], Point_BR[1], Point_BL[0], Point_BL[1]));
 
-	}
-	return FExecStatus::Error(FString::Printf(TEXT("SetStickerTextCoordinates: Absent args!")));
-}
+// 	}
+// 	return FExecStatus::Error(FString::Printf(TEXT("SetStickerTextCoordinates: Absent args!")));
+// }
 
 FExecStatus FObjectHandler::SetStickerTextMesh(const TArray<FString>& Args)
 {

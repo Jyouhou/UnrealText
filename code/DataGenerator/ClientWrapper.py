@@ -9,16 +9,19 @@ import time
 
 
 class WrappedClient(object):
-    def __init__(self, client, DataStoragePath, HighResFactor, UnrealProjectPath):
+    def __init__(self, client, DataStoragePath, HighResFactor, UnrealProjectName):
         self.client = client
         self.DataStoragePath = DataStoragePath
         self.size = None
+        self.UnrealProjectName = UnrealProjectName
         self.HighResFactor = HighResFactor
-        self.HighResPath = os.path.join(UnrealProjectPath, "Saved/Screenshots/Linux")
+        self.HighResPath = f'../../../PackagedEnvironment/{UnrealProjectName}/{UnrealProjectName}/Saved/Screenshots/LinuxNoEditor/'
+        os.makedirs(self.HighResPath, exist_ok=True)
+        self.lowResPath = f'../../../PackagedEnvironment/{UnrealProjectName}/{UnrealProjectName}/Binaries/Linux/cache.png'
 
     def setres(self, w, h):
-        print(f'    Windows will be set to {w+10}x{h+34}')
-        _ = self.client.request(f"vrun r.setres {w+10}x{h+34}")
+        print(f'    Windows will be set to {w}x{h}')
+        _ = self.client.request(f"vrun r.setres {w}x{h}w")
         self.size = (w, h)
 
     def isconnected(self):
@@ -68,15 +71,17 @@ class WrappedClient(object):
         imgBinary = self.client.request('vget /camera/0/normal png')
         return WrappedClient.readPNGFromBinary(imgBinary)[:, :, :3]
 
-    def getColor(self, temp_path='./cache_light.png', return_path=False):
+    def getColor(self, return_path=False):
         """
         get the lighting map
         return: h x w x 3
         """
-        _ = self.client.request(f'vget /screenshot {temp_path}')
+        _ = self.client.request(f'vget /camera/0/lit ./cache.png')
         if return_path:
-            return cv.imread(temp_path), temp_path
-        return cv.imread(temp_path)
+            returns = cv.imread(self.lowResPath), self.lowResPath
+        else:
+            returns = cv.imread(self.lowResPath)
+        return returns
 
     @staticmethod
     def readPNGFromBinary(binary):

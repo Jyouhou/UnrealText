@@ -80,9 +80,6 @@ public:
     // text instance data
     // ratio, computed as mesh coordinate UVs
     // currently not usedful...
-    TArray<FVector2D> BBoxCoordinates; // BBC[4i]~BBC[4i+3]: box i, UL(x,y), UR(x,y), BL(x, y), BR(x,y), in [0, 1]
-    TArray<FVector> CBoxCoordinates; // similar to BBC
-    TArray<FString> Texts; 
     UTexture2D *StickerImg;
 
     // Method: loading text png as textures
@@ -117,13 +114,10 @@ public:
     float pi;
     // given the coordinates of quadrilateral
     // return the adjudsted near-retangle
-    virtual void ScreenRectToWorldRect(TArray<float> IrreQuad, FVector &UL_Position, FVector &UR_Position, FVector &BR_Position, FVector &BL_Position);
     virtual FVector TraceHitPointLocationComputationFromScreen(float ScreenX, float ScreenY);
     virtual FVector FloatTraceHitPointLocationComputationFromScreen(float ScreenX, float ScreenY);
-    virtual void SetTextLocationFromScreen(float UL_X, float UL_Y, float UR_X, float UR_Y, float BR_X, float BR_Y, float BL_X, float BL_Y);
     virtual void CloseTraceWithHitCheck(bool& isHit, FVector InitLocation, FVector& SurfaceNormal, FVector& Location, float ThicknessRatio);
     virtual void CheckVisibility(bool& isVisible, FVector WorldLoc);
-    // loaded text attribute
     UPROPERTY(EditAnywhere)
     float UL_X;
     UPROPERTY(EditAnywhere)
@@ -204,7 +198,6 @@ public:
                                 float Spe, float Met, float Rou);
     virtual void Handle_AdjustBox();
     virtual void Handle_FailedBox();
-    virtual void Handle_SetTextPositionFromScreen(float UL_X, float UL_Y, float UR_X, float UR_Y, float BR_X, float BR_Y, float BL_X, float BL_Y, FVector2D &ULScreenPosition, FVector2D &URScreenPosition, FVector2D &BRScreenPosition, FVector2D &BLScreenPosition);
     virtual void Handle_ResizeAndGenerateMesh(float TargetAspectRatio); // AR = width / height
     virtual void Handle_LoadTextFromPngPath();
     virtual void Handle_LoadTextFromPngPath(FString FilePath);

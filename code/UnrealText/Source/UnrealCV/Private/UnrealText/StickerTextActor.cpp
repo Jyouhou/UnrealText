@@ -16,8 +16,8 @@ AStickerTextActor::AStickerTextActor()
 
     mesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("TextMesh"));
     RootComponent = mesh;
-    DefaultTextPngFilePath = "~/default.png";
-    MaterialAssetFilePath = "/Game/UnrealTextAssets/Synth3DTexture.Synth3DTexture";
+    DefaultTextPngFilePath = "/Game/UnrealText/default.png";
+    MaterialAssetFilePath = "/Game/UnrealText/UnrealTextTexture.UnrealTextTexture";
     MeshDensityX = 50;
     MeshDensityY = 50;
     MeshDensityMultiplier = 4;

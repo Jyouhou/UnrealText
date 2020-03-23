@@ -510,7 +510,6 @@ void EmptyLinkFunctionForGeneratedCodeStickerTextActor() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStickerTextActor_Statics::NewProp_UL_X_MetaData[] = {
 		{ "Category", "StickerTextActor" },
 		{ "ModuleRelativePath", "Public/UnrealText/StickerTextActor.h" },
-		{ "ToolTip", "loaded text attribute" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AStickerTextActor_Statics::NewProp_UL_X = { "UL_X", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStickerTextActor, UL_X), METADATA_PARAMS(Z_Construct_UClass_AStickerTextActor_Statics::NewProp_UL_X_MetaData, ARRAY_COUNT(Z_Construct_UClass_AStickerTextActor_Statics::NewProp_UL_X_MetaData)) };
@@ -771,7 +770,7 @@ void EmptyLinkFunctionForGeneratedCodeStickerTextActor() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AStickerTextActor, 846252394);
+	IMPLEMENT_CLASS(AStickerTextActor, 1574511650);
 	template<> UNREALCV_API UClass* StaticClass<AStickerTextActor>()
 	{
 		return AStickerTextActor::StaticClass();

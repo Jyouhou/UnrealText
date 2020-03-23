@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "ProceduralMeshComponent.h" // add ProceduralMeshComponent to [name].Build.cs
+#include "ProceduralMeshComponent.h" // add ProceduralMeshComponent to [name].Build.cs to include this header
 #include "Components/DecalComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "Engine/Texture2D.h"

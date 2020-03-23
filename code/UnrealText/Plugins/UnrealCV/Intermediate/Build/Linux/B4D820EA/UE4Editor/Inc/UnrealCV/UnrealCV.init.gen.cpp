@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeUnrealCV_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x85DD9FE5,
+				0x0DD133A3,
 				0x5D6228EF,
 				METADATA_PARAMS(nullptr, 0)
 			};

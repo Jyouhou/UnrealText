@@ -128,15 +128,6 @@ void ACameraWanderActor::Handle_TakeOneStep()
 
 bool ACameraWanderActor::Handle_SetParam(FString ParamName, float Value)
 {
-    // MaxStepSize = 1000;
-    // MinStepSize = 10;
-    // WindowsHeight = 720;
-    // WindowsWidth = 1080;
-    // pitch_sigma = 30;
-    // yaw_sigma = 30;
-    // roll_abs_range = 30;
-    // MaxStepRatio = 0.5;
-    // MinStepRatio = 0.01;
     if (ParamName == "MaxStepSize")
     {
         MaxStepSize = (int32)Value;
@@ -207,7 +198,6 @@ FVector ACameraWanderActor::SampleNextLocation(UFusionCamSensor * Camera, bool &
              (CurrentLocation.X), 
              (CurrentLocation.Y),
              (CurrentLocation.Z));
-             // Error/TODO: this world position is not the real location!
     bool HitFlag = GetWorld()->LineTraceSingleByChannel(HitResult, WorldPosition, WorldPosition + MaxStepSize * WorldDirection, ECC_Visibility, TraceParams);
     FVector HitPointLocation;
     if (HitFlag)
@@ -230,7 +220,6 @@ FVector ACameraWanderActor::SampleNextLocation(UFusionCamSensor * Camera, bool &
         bisTooClose = true;
     }
     FVector NewLocation = CurrentLocation + RandomPositionRatio * vectorized_path;
-    // std::cout<<"New Location "<<NewLocation.X<<NewLocation.Y<<NewLocation.Z<<std::endl;
     UE_LOG(LogTemp, Warning, TEXT("New Location %.3f %.3f %.3f"), 
              (NewLocation.X), 
              (NewLocation.Y),
