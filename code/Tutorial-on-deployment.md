@@ -18,7 +18,7 @@ You can click the \[Fig\] link to see illustrations.
 4. Copy the `Plugins` folder to the root of your UE project in Step 1
 5. Restart UE, and you should see the prompt about the new plugin; Enable it
 6. Make sure the functions that inherit from UnrealCV are also working; e.g. `vset /viewmode normal` and `vset /viewmode lit`
-7. In the Content Browser, click `View Options -> Show Plugin Content` [\[Fig\]](https://github.com/Jyouhou/UnrealText/blob/master/imgs/contentbrower.png)
+7. In the Content Browser, click `View Options -> Show Plugin Content` [\[Fig\]](https://github.com/Jyouhou/UnrealText/blob/master/imgs/contentbrowser.png)
 
 ### Step 3: set up the scene
 1. Wander around the scene, delete all objects that have text on them (or cover them)
