@@ -48,7 +48,7 @@ The labels are stored in the following format:
 
 | Scene Name | Download Link | 
 | :---: | :---: |
-| Realistic Rendering | To Be Uploaded |
+| Realistic Rendering | [Baidu Drive](https://pan.baidu.com/s/1lgWWdo7YkkoWiLtTBm7Vzw) password:moc3 |
 
 How-to: 
 
