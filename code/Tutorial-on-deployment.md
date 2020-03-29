@@ -56,7 +56,7 @@ We release the camera anchors we use in our research in `UnrealText/code/DataGen
 1. cd to `UnrealText/code/DataGenerator`
 2. `mkdir ../../../resources`, download resources([Baidu Drive](https://pan.baidu.com/s/1MfEeqWF0z_AOdWGW48DJcw) password:0cgw) and put them into this folder
 3. `mkdir ../../../PackagedEnvironments`, put the generated game file or the downloaded ones into this folder
-4. run: `python3 run_generation.py --UnrealProjectName=$SceneName` 
+4. run: `python3 run_generation.py --UnrealProjectName $SceneName --languages Latin` 
 
 
 ## Details:
