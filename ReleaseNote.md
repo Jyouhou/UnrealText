@@ -1,8 +1,11 @@
 # (1) Synthetic Scene Text Dataset from 3D World
-| Language | Num of Images | Num of Text | Download Link | 
-| :---: | :---: | :---: | :---: |
-| Latin/English | 728K | ~20M | [Baidu Drive](https://pan.baidu.com/s/1e4SNTG2QSM5XBhxw80D8qw)  password:2h8d |
-| Multilingual (10 langs) | 674K | ~18M | To Be Uploaded |
+
+| Lanuages | Num of Images | Num of Text | Baidu Drive | Google Drive |
+| :---: | :---: | :---: | :---: | :---: |
+| English/Latin | 728K | ~20M | [Link](https://pan.baidu.com/s/1e4SNTG2QSM5XBhxw80D8qw)  password: 2h8d | [Link](https://drive.google.com/open?id=14i-v0FTRy0TqgiFf-dl4SKRB5NNIkXSG) |
+| Multilingual | 674K | ~18M | [Link](https://pan.baidu.com/s/1DCrs0KitEC1RBAKn9jo_KA)  password: tddl | [Link](https://drive.google.com/drive/folders/1M9jVQqnda0ImmcwoQFK_WUW9XWu2G82R?usp=sharing) |
+
+The multilingual version consists of the following 10 languages: _Arabic_, _English_, _French_, _Chinese_, _German_, _Korean_, _Japanese_, _Italian_, _Bangla_, _Hindi_
 
 Both datasets are __very__ large (~150GB). Therefore, I split them into "several" files (~130). They are organzied as follows:
 
@@ -46,23 +49,30 @@ The labels are stored in the following format:
 
 # (2) Demo UE Project(s)
 
-| Scene Name | Download Link | 
-| :---: | :---: |
-| Realistic Rendering | [Baidu Drive](https://pan.baidu.com/s/1lgWWdo7YkkoWiLtTBm7Vzw) password:moc3 |
+| Scene Name | Baidu Drive | Google Drive |
+| :---: | :---: | :---: |
+| Realistic Rendering | [Link](https://pan.baidu.com/s/1pXw-tRsOHIg3wkVpfTwoaQ) password: wgja | [Link](https://drive.google.com/file/d/1CKW8KH4jybPux8oIYG-yRV3arrrNlQ2a/view?usp=sharing) |
 
 How-to: 
 
 1. download and uncompress the project
-2. in UE4.22, load the following file: `Demo_RealisticRend/Demo_RealisticRend.uproject`
+2. in UE4.22, load the following file: `Demo/Demo.uproject`
 
-# (3) Packaged Scene Executables
+# (3) UnrealText resources
 
-| Scene Name | Download Link | 
-| :---: | :---: |
-| Realistic Rendering | [Baidu Drive](https://pan.baidu.com/s/1Pb4dO860LLRY1yqvMaqvWQ)  password:s3ol |
+| Resources | Baidu Drive | Google Drive |
+| :---: | :---: | :---: |
+| background images | [Link](https://pan.baidu.com/s/1LJoBoL0GCyn8St6Y9s8lFg) password: 3x3r | To be uploaded |
+| fonts & corpus | [Link](https://pan.baidu.com/s/1pw-W3ggXuiRzgQnxg1sOww) password: ip8w | To be uploaded |
+
+# (4) Packaged Scene Executables
+
+| Scenes | Baidu Drive | Google Drive |
+| :---: | :---: | :---: |
+| All 30 scene executables | [Link](https://pan.baidu.com/s/1RhqXfN7RXoZSXldDfMVjUQ)  password: z3af | [Link](https://drive.google.com/file/d/1KDYFrccpukLgk3FXze3BoY_Tk6T91XQB/view?usp=sharing) |
 
 How-to: 
 
 1. download and uncompress the project
-2. cd to `Demo_RealisticRend/Demo_RealisticRend/Binaries/Linux/`, and double-click the executable `Demo_RealisticRend`
-3. alternatively, you can launch it in terminal, `./Demo_RealisticRend/Demo_RealisticRend/Binaries/Linux/Demo_RealisticRend`
+2. cd to `$Name/$Name/Binaries/Linux/`, and double-click the executable `./Demo`
+3. alternatively, you can launch it in terminal, `./$Name/$Name/Binaries/Linux/Demo`

@@ -1,6 +1,6 @@
 # Tutorial
-If you would like to build your only UE project or use new scene models, you can follow the following steps. If you want to try the demo projects and executables, you should jump to Step 6. 
-You can click the \[Fig\] link to see illustrations.
+If you would like to build your only UE project or use new scene models, you can follow the following step 1-5. If you want to try the demo projects and precompiled executables, you should jump to Step 6.2. 
+You can click the _\[Fig\]_ link to see illustrations.
 
 ## From scratch
 
@@ -12,7 +12,7 @@ You can click the \[Fig\] link to see illustrations.
 
 
 ### Step 2: set up UnrealText plugin
-1. cd to `UnrealText-Synthetic-Scene-Text-Images/code/UnrealText/`
+1. cd to `UnrealText/code/UnrealText/`
 2. In `./build_TEXT.sh`, specify the full path to the root of your Unreal Engine 4.22 after the `--UE4` argument
 3. Compile the UnrealText plugin by running the script `./build_TEXT.sh`
 4. Copy the `Plugins` folder to the root of your UE project in Step 1
@@ -38,7 +38,7 @@ You can click the \[Fig\] link to see illustrations.
 
 
 ### Step 5: select camera anchors
-We release the camera anchors we use in our research in `UnrealText-Synthetic-Scene-Text-Images/code/DataGenerator/camera_anchors`. If you want to label new anchors, please follow the instructions here:
+We release the camera anchors we use in our research in `UnrealText/code/DataGenerator/camera_anchors`. If you want to label new anchors, please follow the instructions here:
 
 1. Set bindings in `Editor -> Project Setting -> Engine -> Input` as specified in [\[Fig\]](https://github.com/Jyouhou/UnrealText/blob/master/imgs/binding.png)
 2. From `Content Browser -> Content -> UnrealCV C++ Classes -> UnrealCV -> Public -> UnrealText`, instantiate the following actor: `AnchorRecordPawn`
@@ -53,10 +53,10 @@ We release the camera anchors we use in our research in `UnrealText-Synthetic-Sc
 2. Copy `unrealcv.ini` into the `Binaries/Linux` folder
 
 #### 6.2 generate data
-1. cd to `UnrealText-Synthetic-Scene-Text-Images/code/DataGenerator`
-2. `mkdir ../../../resources`, download resources([Baidu Drive](https://pan.baidu.com/s/1MfEeqWF0z_AOdWGW48DJcw) password:0cgw) and put them into this folder (`fonts&corpus`)
+1. cd to `UnrealText/code/DataGenerator`
+2. `mkdir ../../../resources`, download resources([Baidu Drive](https://pan.baidu.com/s/1MfEeqWF0z_AOdWGW48DJcw) password:0cgw) and put them into this folder
 3. `mkdir ../../../PackagedEnvironments`, put the generated game file or the downloaded ones into this folder
-4. run: `python3 run_generation.py`
+4. run: `python3 run_generation.py --UnrealProjectName=$SceneName` 
 
 
 ## Details:
@@ -81,11 +81,11 @@ make
 ```
 ./
 +---PackagedEnvironment
-    +---Demo_RealisticRend
-        +---Demo_RealisticRend
+    +---SceneName
+        +---Demo
             +---Binaries
                 +---Linux
-                    |   Demo_RealisticRend
+                    |   Demo
                     |   unrealcv.ini
                 ....
         +---Engine

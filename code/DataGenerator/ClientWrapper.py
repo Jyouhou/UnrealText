@@ -15,9 +15,9 @@ class WrappedClient(object):
         self.size = None
         self.UnrealProjectName = UnrealProjectName
         self.HighResFactor = HighResFactor
-        self.HighResPath = f'../../../PackagedEnvironment/{UnrealProjectName}/{UnrealProjectName}/Saved/Screenshots/LinuxNoEditor/'
+        self.HighResPath = f'../../../PackagedEnvironment/{UnrealProjectName}/Demo/Saved/Screenshots/LinuxNoEditor/'
         os.makedirs(self.HighResPath, exist_ok=True)
-        self.lowResPath = f'../../../PackagedEnvironment/{UnrealProjectName}/{UnrealProjectName}/Binaries/Linux/cache.png'
+        self.lowResPath = f'../../../PackagedEnvironment/{UnrealProjectName}/Demo/Binaries/Linux/cache.png'
 
     def setres(self, w, h):
         print(f'    Windows will be set to {w}x{h}')

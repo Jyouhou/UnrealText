@@ -16,18 +16,59 @@ from bidi.algorithm import get_display
 arabic_alphabet = "غظضذخثتشرقصفعسنملكيطحزوهدجبأ"
 size_arabic = len(arabic_alphabet)
 
+font_paths = {
+    "Arabic": "../../../resources/fonts&corpus/Arabic/fonts/",
+    "English": "../../../resources/fonts&corpus/Latin/fonts/",
+    "French": "../../../resources/fonts&corpus/Latin/fonts/",
+    "Chinese": "../../../resources/fonts&corpus/Chinese/fonts/",
+    "German": "../../../resources/fonts&corpus/Latin/fonts/",
+    "Korean": "../../../resources/fonts&corpus/Korean/fonts/",
+    "Japanese": "../../../resources/fonts&corpus/Japanese/fonts/",
+    "Italian": "../../../resources/fonts&corpus/Latin/fonts/",
+    "Bangla": "../../../resources/fonts&corpus/Bangla/fonts/",
+    "Hindi": "../../../resources/fonts&corpus/Hindi/fonts/",
+    "Latin": "../../../resources/fonts&corpus/Latin/fonts/"
+}
+
+corpus_paths = {
+    "Arabic": "../../../resources/fonts&corpus/Arabic/corpus/corpus_ar.xml",
+    "English": "../../../resources/fonts&corpus/Latin/corpus/English.txt",
+    "French": "../../../resources/fonts&corpus/Latin/corpus/corpus_fr.xml",
+    "Chinese": "../../../resources/fonts&corpus/Chinese/corpus/corpus_zh.xml",
+    "German": "../../../resources/fonts&corpus/Latin/corpus/corpus_de.xml",
+    "Korean": "../../../resources/fonts&corpus/Korean/corpus/corpus_ko.xml",
+    "Japanese": "../../../resources/fonts&corpus/Japanese/corpus/corpus_ja.xml",
+    "Italian": "../../../resources/fonts&corpus/Latin/corpus/corpus_it.xml",
+    "Bangla": "../../../resources/fonts&corpus/Bangla/corpus/corpus_bn.xml",
+    "Hindi": "../../../resources/fonts&corpus/Hindi/corpus/corpus_hi.xml",
+    "Latin": "../../../resources/fonts&corpus/Latin/corpus/corpus_latin.xml"
+}
+
+SeparatedBySpace = {
+    "Arabic": True, 
+    "English": True, 
+    "French": True, 
+    "Chinese": False, 
+    "German": True, 
+    "Korean": False, 
+    "Japanese": False, 
+    "Italian": True, 
+    "Bangla": True, 
+    "Hindi": True, 
+    "Latin": True
+}
 
 class WordRenderer(object):
     def __init__(self, *args, **kwargs):
         self.FontSize = kwargs.get('FontSize', [25, 128])
-        self.FontRoots = kwargs.get('FontPath', ['../../../resources/fonts&corpus/Latin/fonts/'])
-        self.CorpusPath = kwargs.get('CorpusPath', '../../../resources/fonts&corpus/Latin/corpus/English.txt')
+        self.Language = kwargs.get('Language', [25, 128])
+        self.FontRoots = font_paths[self.Language]
+        self.CorpusPath = corpus_paths[self.Language]
         self.ContentPath = kwargs.get('ContentPath', '../../../resources/WordCrops')
         self.BackGroundPath = kwargs.get('BackGroundPath', '../../../resources/bg_img')
-        self.SeparatedBySpace = kwargs.get('SeparatedBySpace', True)
+        self.SeparatedBySpace = SeparatedBySpace[self.Language]
         self.is_debug = kwargs.get('is_debug', False)
-        self.is_mlt = kwargs.get('is_mlt', False)
-        self.is_Arabic = kwargs.get('is_Arabic', False)
+        self.is_Arabic = (self.Language == "Arabic")
         self.CurrentFont = None
         
         # Corpus
@@ -425,27 +466,7 @@ class WordRenderer(object):
 
 if __name__ == '__main__':
     # testing: 
-    # Renderer = WordRenderer(is_debug=True, SeparatedBySpace=True,
-    #                 FontPath = ['../../../resources/fonts&corpus/Latin/fonts/'],
-    #                 CorpusPath = '../../../resources/fonts&corpus/Latin/corpus/corpus_en.xml')
-    Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=True, is_Arabic=True,
-                    FontPath = ['../../../resources/fonts&corpus/Arabic/fonts/'],
-                    CorpusPath = '../../../resources/fonts&corpus/Arabic/corpus/corpus_ar.xml')
-    # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=True,
-    #                 FontPath = ['../../../resources/fonts&corpus/Bangla/fonts/'],
-    #                 CorpusPath = '../../../resources/fonts&corpus/Bangla/corpus/corpus_bn.xml')
-    # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=True,
-    #                 FontPath = ['../../../resources/fonts&corpus/Hindi/fonts/'],
-    #                 CorpusPath = '../../../resources/fonts&corpus/Hindi/corpus/corpus_hi.xml')
-    # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=False,
-    #                 FontPath = ['../../../resources/fonts&corpus/Japanese/fonts/'],
-    #                 CorpusPath = '../../../resources/fonts&corpus/Japanese/corpus/corpus_ja.xml')
-    # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=False,
-    #                 FontPath = ['../../../resources/fonts&corpus/Korean/fonts/'],
-    #                 CorpusPath = '../../../resources/fonts&corpus/Korean/corpus/corpus_ko.xml')
-    # Renderer = WordRenderer(is_debug=True,  SeparatedBySpace=False,
-    #                 FontPath = ['../../../resources/fonts&corpus/Chinese/fonts/'],
-    #                 CorpusPath = '../../../resources/fonts&corpus/Chinese/corpus/corpus_zh.xml')
+    Renderer = WordRenderer(is_debug=True, Language="Arabic")
     for i in (range(40)):
         print(f"{i}--------")
         # Img[HxWx4], Texts(List[str]), CBOX[nx4x2], BBOX[nx4x2] (N_box, corner, x/y)

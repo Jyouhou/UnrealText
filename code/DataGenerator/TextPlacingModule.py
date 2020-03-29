@@ -41,47 +41,12 @@ class TextNormalBasedLocalization(object):
             raise ValueError()
         self.AllTextObjects = [TextInstance(ID, f'StickerTextActor_{2 * ID - 1}') for ID in range(self.MaxTextCount)]
         
-        if kwargs.get('multi_lingual', False):
-            self.WordPainter = [WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=True,
-                                            FontPath = ['../../../resources/fonts&corpus/Latin/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Latin/corpus/corpus_latin.xml',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True),
-                                WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=True, is_Arabic=True,
-                                            FontPath = ['../../../resources/fonts&corpus/Arabic/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Arabic/corpus/corpus_ar.xml',
-                                            BackGroundPath='',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True),
-                                WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=True,
-                                            FontPath = ['../../../resources/fonts&corpus/Bangla/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Bangla/corpus/corpus_bn.xml',
-                                            BackGroundPath='',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True),
-                                WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=True,
-                                            FontPath = ['../../../resources/fonts&corpus/Hindi/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Hindi/corpus/corpus_hi.xml',
-                                            BackGroundPath='',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True),
-                                WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=False,
-                                            FontPath = ['../../../resources/fonts&corpus/Japanese/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Japanese/corpus/corpus_ja.xml',
-                                            BackGroundPath='',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True),
-                                WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=False,
-                                            FontPath = ['../../../resources/fonts&corpus/Korean/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Korean/corpus/corpus_ko.xml',
-                                            BackGroundPath='',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True),
-                                WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=False,
-                                            FontPath = ['../../../resources/fonts&corpus/Chinese/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Chinese/corpus/corpus_zh.xml',
-                                            BackGroundPath='',
-                                            FontSize=kwargs.get('FontSize', [15, 128]), is_mlt=True)]
-        else:
-            # Latin/English only
-            self.WordPainter = [WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,  SeparatedBySpace=True,
-                                            FontPath = ['../../../resources/fonts&corpus/Latin/fonts/'],
-                                            CorpusPath = '../../../resources/fonts&corpus/Latin/corpus/corpus_en.xml',
-                                            FontSize=kwargs.get('FontSize', [15, 128]))]
+        self.WordPainter = [WordRenderer(ContentPath=self.ContentPath, is_debug=self.is_debug,
+                                        Language=language,
+                                        FontSize=kwargs.get('FontSize', [15, 128])
+                            ) 
+                            for language in kwargs["languages"]
+        ]
             
         self.BoxProposalModule = BoxProposalModule(reduceRatio=self.reduceRatio, is_debug=self.is_debug)
     

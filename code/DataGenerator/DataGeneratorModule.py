@@ -34,7 +34,7 @@ class DataGenerator(object):
                  FontSize=[15, 128],
                  use_real_img=0.1,
                  is_debug=True,
-                 multi_lingual=False,
+                 languages=["Latin"],
                  HighResFactor=2.0,
                  UnrealProjectName="./",
                  **kwargs):
@@ -84,7 +84,7 @@ class DataGenerator(object):
                                                     FontSize=FontSize,
                                                     is_debug=is_debug,
                                                     use_real_img=use_real_img,
-                                                    multi_lingual=multi_lingual,
+                                                    languages=languages,
                                                     HighResFactor=HighResFactor)
         
         # initializer meters
@@ -105,8 +105,8 @@ class DataGenerator(object):
             # os.system('~/cache_light.png')
 
     def _cleanup(self):
-        os.system(f'rm ../../../PackagedEnvironment/{self.UnrealProjectName}/{self.UnrealProjectName}/Saved/Screenshots/LinuxNoEditor/*png')
-        os.system(f'rm ../../../PackagedEnvironment/{self.UnrealProjectName}/{self.UnrealProjectName}/Saved/Logs/*')
+        os.system(f'rm ../../../PackagedEnvironment/{self.UnrealProjectName}/Demo/Saved/Screenshots/LinuxNoEditor/*png')
+        os.system(f'rm ../../../PackagedEnvironment/{self.UnrealProjectName}/Demo/Saved/Logs/*')
 
     def _InitializeDataStorage(self):
         os.makedirs(self.ImgFolder, exist_ok=True)
@@ -191,7 +191,7 @@ class DataGenerator(object):
                 print(f' ----- retrieve image:       {self.save_meter}')
     
 def StartEngine(UnrealProjectName):
-    engine_exe = f'../../../PackagedEnvironment/{UnrealProjectName}/{UnrealProjectName}/Binaries/Linux/{UnrealProjectName}'
+    engine_exe = f'../../../PackagedEnvironment/{UnrealProjectName}/Demo/Binaries/Linux/Demo'
     os.system(f'chmod +x {engine_exe}')
     command = engine_exe + ' > engine_log.txt &'
     print(command)
