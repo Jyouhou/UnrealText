@@ -62,14 +62,14 @@ How-to:
 
 | Resources | Baidu Drive | Google Drive |
 | :---: | :---: | :---: |
-| background images | [Link](https://pan.baidu.com/s/1LJoBoL0GCyn8St6Y9s8lFg) password: 3x3r | To be uploaded |
-| fonts & corpus | [Link](https://pan.baidu.com/s/1pw-W3ggXuiRzgQnxg1sOww) password: ip8w | To be uploaded |
+| background images | [Link](https://pan.baidu.com/s/1LJoBoL0GCyn8St6Y9s8lFg) password: 3x3r | [Link](https://drive.google.com/open?id=1DHJwxTF0pE35aEPM-nuN3E2tgMac4FyE) |
+| fonts & corpus | [Link](https://pan.baidu.com/s/1pw-W3ggXuiRzgQnxg1sOww) password: ip8w | [Link](https://drive.google.com/open?id=1j2q3qOn_k4SyizfKjw6xb1mSWUV4G2du) |
 
 # (4) Packaged Scene Executables
 
 | Scenes | Baidu Drive | Google Drive |
 | :---: | :---: | :---: |
-| All 30 scene executables | [Link](https://pan.baidu.com/s/1RhqXfN7RXoZSXldDfMVjUQ)  password: z3af | [Link](https://drive.google.com/file/d/1KDYFrccpukLgk3FXze3BoY_Tk6T91XQB/view?usp=sharing) |
+| All 30 scene executables | [Link](https://pan.baidu.com/s/1RhqXfN7RXoZSXldDfMVjUQ)  password: z3af | [Link](https://drive.google.com/open?id=1Vv1m5DNgffhjoAXId1bOKF6HXnZouOxM) |
 
 How-to: 
 
