@@ -62,7 +62,7 @@ class WordRenderer(object):
     def __init__(self, *args, **kwargs):
         self.FontSize = kwargs.get('FontSize', [25, 128])
         self.Language = kwargs.get('Language', "English")
-        self.FontRoots = font_paths[self.Language]
+        self.FontRoots = [font_paths[self.Language]]
         self.CorpusPath = corpus_paths[self.Language]
         self.ContentPath = kwargs.get('ContentPath', '../../../resources/WordCrops')
         self.BackGroundPath = kwargs.get('BackGroundPath', '../../../resources/bg_img')
