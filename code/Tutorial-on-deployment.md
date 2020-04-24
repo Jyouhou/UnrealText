@@ -2,6 +2,12 @@
 If you would like to build your only UE project or use new scene models, you can follow the following step 1-5. If you want to try the demo projects and precompiled executables, you should jump to Step 6.2. 
 You can click the _\[Fig\]_ link to see illustrations.
 
+## Dependencies
+- [unrealcv](http://docs.unrealcv.org/en/master/tutorials/getting_started.html#install-unrealcv-python-library)
+- arabic_reshaper: `pip install arabic_reshaper`
+- bidi: `pip install python-bidi`
+
+
 ## From scratch
 
 ### Step 1: set up UE4.22
@@ -57,6 +63,9 @@ We release the camera anchors we use in our research in `UnrealText/code/DataGen
 2. `mkdir ../../../resources`, download resources([Baidu Drive](https://pan.baidu.com/s/1MfEeqWF0z_AOdWGW48DJcw) password:0cgw; [Google Drive](https://drive.google.com/drive/folders/1IrvNeMM8R1wyrNUEK8B7zz0fiVAVxyIc?usp=sharing)) and put them into this folder
 3. `mkdir ../../../PackagedEnvironments`, put the generated game file or the downloaded ones into this folder
 4. run: `python3 run_generation.py --UnrealProjectName $SceneName --languages Latin` 
+
+#### 6.3 Visualize
+The generated data will be stored in the `$YourUnrealTextPath/../GeneratedData/DataFraction_*` folder. `cd` into one of these folders, run `python3 vis.py`. You will need Matplotlib to do so. 
 
 
 ## Details:

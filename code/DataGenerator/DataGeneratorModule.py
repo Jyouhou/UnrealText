@@ -67,7 +67,7 @@ class DataGenerator(object):
         self._InitializeDataStorage()
         # step 2
         if len(EnvName) > 0:
-            self.StartEngine(EnvName)
+            StartEngine(EnvName)
         self._ConnectToGame()
         # step 3 set resolution & rotation
         self.client.setres(self.WindowWidth, self.WindowHeight)
@@ -197,7 +197,7 @@ def StartEngine(UnrealProjectName):
     print(command)
     subprocess.call(command, shell=True)
     print('Engine Started')
-    time.sleep(15)
+    time.sleep(25)
 
 
 if __name__ == '__main__':

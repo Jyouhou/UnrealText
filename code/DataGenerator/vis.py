@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2 as cv
+
+import os
+import random
 import json
-import pdb
-from skimage.measure import block_reduce
 
 def show(img):
     """
@@ -42,10 +43,7 @@ def verify(ID):
 
 
 if __name__ == '__main__':
-    import PIL.Image as Image
-    import numpy as np
-    import random
-    import sys
-
+    file_count = len([f for f in os.listdir("./imgs") if f.endswith("jpg")])
+    
     for i in range(20):
-        verify(random.randint(0, int(sys.argv[1])))
+        verify(random.randint(0, file_count))
