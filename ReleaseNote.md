@@ -47,6 +47,8 @@ The labels are stored in the following format:
 }
 ```
 
+Note that there may be a very small proportion of wrong labels. They are caused by the defects in some scene models. These wrong samples are characterized by very small sizes. You can discard these samples by filtering out word boxes that are less than 10 pixels high. 
+
 # (2) Demo UE Project(s)
 
 | Scene Name | Baidu Drive | Google Drive |
