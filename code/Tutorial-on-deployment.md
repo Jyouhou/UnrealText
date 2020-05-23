@@ -78,7 +78,7 @@ Follow instructions from [this post](https://microsoft.github.io/AirSim/docs/bui
 2. clone the UE GitHub repo and compile:
 
 ```
-git clone -b 4.22 https://github.com/EpicGames/UnrealEngine.git
+git clone -b 4.22 --depth 1 https://github.com/EpicGames/UnrealEngine.git
 cd UnrealEngine
 ./Setup.sh
 ./GenerateProjectFiles.sh
