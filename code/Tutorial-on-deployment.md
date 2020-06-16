@@ -11,7 +11,7 @@ You can click the _\[Fig\]_ link to see illustrations.
 ## From scratch
 
 ### Step 1: set up UE4.22
-1. Download and compile Unreal Engine 4.22
+1. Download and compile Unreal Engine 4.22 (see below for details)
 2. Open a blank project
 3. Copy the _Realistic Rendering_ assets and the whole _UnrealText_ folder from `Assets/RealisticRenderingAssets` into the `Content` folder of the new project
 4. Restart UE, load and set `Maps/Room` as the _Editor Startup Map_ and _Game Default Map_ in `Edit -> Project Settings`. 
@@ -72,7 +72,7 @@ The generated data will be stored in the `$YourUnrealTextPath/../GeneratedData/D
 
 (1) How to download & compile UE4.22?
 
-Follow instructions from [this post](https://microsoft.github.io/AirSim/docs/build_linux/):
+Follow instructions from [this post](https://microsoft.github.io/AirSim/build_linux/):
 
 1. [get register](https://www.unrealengine.com/ja/) with Epic Games
 2. clone the UE GitHub repo and compile:
