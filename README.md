@@ -1,6 +1,6 @@
 # Introduction
 
-_UnrealText_ is a project that synthesizes scene text images using 3D graphics engine. This repository accompanies our CVPR 2020 paper: _UnrealText: Synthesizing Realistic Scene Text Images from the Unreal World_ [\[Arxiv\]](https://arxiv.org/abs/2003.10608) [\[CVF version\]](http://openaccess.thecvf.com/content_CVPR_2020/papers/Long_UnrealText_Synthesizing_Realistic_Scene_Text_Images_From_the_Unreal_World_CVPR_2020_paper.pdf). 
+_UnrealText_ is a project that synthesizes scene text images using 3D graphics engine. This repository accompanies our paper: _UnrealText: Synthesizing Realistic Scene Text Images from the Unreal World_ [\[Arxiv\]](https://arxiv.org/abs/2003.10608). 
 
 ![pipeline](imgs/pipeline.jpg)
 
@@ -16,11 +16,10 @@ We release (Baidu/Google Drive):
 If you find our project helpful in your research, you are highly encouraged to cite our paper: 
 
 ```
-@InProceedings{Long_2020_CVPR,
-author = {Long, Shangbang and Yao, Cong},
-title = {UnrealText: Synthesizing Realistic Scene Text Images From the Unreal World},
-booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-month = {June},
-year = {2020}
+@article{long2020unrealtext,
+  title={UnrealText: Synthesizing Realistic Scene Text Images from the Unreal World},
+  author={Long, Shangbang and Yao, Cong},
+  journal={arXiv preprint arXiv:2003.10608},
+  year={2020}
 }
 ```
