@@ -71,7 +71,7 @@ How-to:
 
 | Scenes | Baidu Drive | Google Drive |
 | :---: | :---: | :---: |
-| All 30 scene executables | [Link](https://pan.baidu.com/s/1x-qaeKOJMfJoO7WGzDtGkA0)  密码:br31 | [Link](https://drive.google.com/open?id=1Vv1m5DNgffhjoAXId1bOKF6HXnZouOxM) |
+| All 30 scene executables | [Link](https://pan.baidu.com/s/1x-qaeKOJMfJoO7WGzDtGkA0)  password: br31 | [Link](https://drive.google.com/open?id=1Vv1m5DNgffhjoAXId1bOKF6HXnZouOxM) |
 
 How-to: 
 
